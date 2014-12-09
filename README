@@ -1,10 +1,15 @@
 ┌
-│This is signature format I came up with last night.
-│This is a toy implementation that doesn't actually sign,
-│just appends a Keccack 256 hash.
-│
-│It also only operates over stdin and stdout,
-│but what more do you really need?
+│┌
+││This is signature format I came up with last night.
+││This is a toy implementation that doesn't actually sign,
+││just appends a Keccack 256 hash.
+││
+││It also only operates over stdin and stdout,
+││but what more do you really need?
+│├
+││⢻⣠⠼⣑⡢⢆⢮⣤⠲⢯⡹⢁⠒⡒⠿⢎⢋⣝⡽⢆⠆⣑⡣⣯⣲⡕⣘⢳⠕⠷⢀⢲
+│└
+│It also nests.
 ├
-│⢻⣠⠼⣑⡢⢆⢮⣤⠲⢯⡹⢁⠒⡒⠿⢎⢋⣝⡽⢆⠆⣑⡣⣯⣲⡕⣘⢳⠕⠷⢀⢲
+│⠷⠎⣧⠲⣛⠺⡬⠾⡐⣬⠢⣐⠂⢎⢉⡝⠒⡦⠵⠆⡋⣄⡈⠔⡴⢬⡔⣝⠵⡫⡜⡥
 └
