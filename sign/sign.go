@@ -19,20 +19,15 @@ func checkError() {
 	}
 }
 
-func checkedWrite(b []byte) {
-	if _, err = os.Stdout.Write(b); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-}
-
 func main() {
 	h := sha3.New256()
 	mw := io.MultiWriter(os.Stdout, h)
 	br := bufio.NewReader(os.Stdin)
 
+	// Write the start rune.
 	_, err = os.Stdout.Write([]byte("┌\n"))
 
+	// Write the message.
 	var line []byte
 	for err == nil {
 		line, err = br.ReadBytes('\n')
@@ -49,11 +44,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Write the deliminator.
 	_, err = os.Stdout.Write([]byte("├\n"))
 	checkError()
 
 	digest := h.Sum(nil)
 
+	// Write the signature.
 	buf := make([]byte, base256.Braille.EncodedLen(len(digest)))
 	base256.Braille.Encode(buf, digest)
 	_, err = os.Stdout.Write([]byte("│"))
@@ -62,6 +59,7 @@ func main() {
 	_, err = os.Stdout.Write(buf)
 	checkError()
 
+	// Write the end rune.
 	_, err = os.Stdout.Write([]byte("\n└\n"))
 	checkError()
 }
