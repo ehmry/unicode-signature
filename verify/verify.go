@@ -28,6 +28,7 @@ func main() {
 	)
 
 	h := sha3.New256()
+	mw := io.MultiWriter(os.Stdout, h)
 	br := bufio.NewReader(os.Stdin)
 
 	// Find the start of the text.
@@ -51,7 +52,8 @@ func main() {
 		if r != '│' {
 			break
 		}
-		h.Write(line)
+		checkError()
+		_, err = mw.Write(line)
 	}
 	checkError()
 
